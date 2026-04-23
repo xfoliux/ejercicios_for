@@ -1,21 +1,21 @@
+function ejecutar(numEjercicio){
+    switch(numEjercicio){
+        case 1:
+        listarNumeros();
+            break;
+        case 2: listarNumeroReversa();
+            break;
+        case 3: listarPares();
+            break;
+        case 4: listarImpares();
+            break;
+    }
+}
 function listarNumeros(){
     for(let i = 0 ; i  <=3 ; i++){
         console.log(i);
     }
 }
-
-function ejecutar(numEjercicio){
-    if(numEjercicio == 1){
-        listarNumeros();
-    }else if(numEjercicio == 2){
-        listarNumeroReversa();
-    } else if(numEjercicio == 3){
-        listarPares();
-    } else if(numEjercicio == 4){
-        listarImpares();
-    }
-}
-
 function listarNumeroReversa(){
     for(let i=3; i >0; i--){
         console.log(i);
@@ -31,3 +31,4 @@ function listarImpares(){
         console.log(i);
     }
 }
+
