@@ -8,11 +8,20 @@
 
 /* BODY */
 body {
-    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    background: linear-gradient(135deg, #0b1220, #1e3a8a, #2563eb);
+    background-size: 200% 200%;
+    animation: fondoAnimado 8s ease infinite;
     color: #333;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+/* ANIMACIÓN FONDO */
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* HEADER */
@@ -22,39 +31,16 @@ body {
     padding: 20px;
 }
 
-/* BOTÓN DINÁMICO */
-.btn-probar {
-    background: linear-gradient(45deg, #2563eb, #3b82f6);
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* EFECTOS DEL BOTÓN */
-.btn-probar:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-
-.btn-probar:active {
-    transform: scale(0.95);
-}
-
 /* CONTENEDOR PRINCIPAL */
 .container {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     margin: auto;
     padding: 40px;
     border-radius: 20px;
-    width: 350px;
+    width: 380px;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     animation: fadeIn 1s ease;
 }
 
@@ -62,7 +48,7 @@ body {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
     }
     to {
         opacity: 1;
@@ -74,28 +60,137 @@ body {
 .container h1 {
     margin-bottom: 20px;
     color: #1e3a8a;
+    letter-spacing: 1px;
+}
+
+/* CONTROL BOX (INPUT + BOTÓN) */
+.control-box {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+/* INPUT LLAMATIVO */
+#txtNumber {
+    padding: 14px;
+    border-radius: 30px;
+    border: 2px solid #2563eb;
+    outline: none;
+    font-size: 15px;
+    width: 180px;
+    background: linear-gradient(145deg, #f1f5f9, #ffffff);
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* EFECTO INPUT */
+#txtNumber:focus {
+    transform: scale(1.05);
+    border-color: #1e40af;
+    box-shadow: 0 0 15px rgba(37,99,235,0.6);
+}
+
+/* BOTÓN EMPRESARIAL PRO */
+.btn-probar {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #2563eb, #1e40af, #3b82f6);
+    background-size: 200%;
+    color: white;
+    border: none;
+    padding: 16px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(37,99,235,0.5);
+}
+
+/* EFECTO HOVER */
+.btn-probar:hover {
+    transform: translateY(-5px) scale(1.07);
+    background-position: right;
+    box-shadow: 0 12px 35px rgba(37,99,235,0.7);
+}
+
+/* EFECTO CLICK */
+.btn-probar:active {
+    transform: scale(0.95);
+}
+
+/* EFECTO BRILLO */
+.btn-probar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.5s;
+}
+
+.btn-probar:hover::before {
+    left: 100%;
 }
 
 /* TABLA */
 .tabla-container {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-/* FILAS */
+/* FILAS LLAMATIVAS */
 .fila {
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px;
-    margin: 5px 0;
-    background: #f1f5f9;
-    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #1e293b;
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecer 0.5s forwards;
 }
 
-/* EFECTO HOVER EN FILAS */
+/* EFECTO ALTERNADO (PRO) */
+.fila:nth-child(even) {
+    background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+}
+
+/* RETARDO */
+.fila:nth-child(1) { animation-delay: 0.1s; }
+.fila:nth-child(2) { animation-delay: 0.2s; }
+.fila:nth-child(3) { animation-delay: 0.3s; }
+.fila:nth-child(4) { animation-delay: 0.4s; }
+.fila:nth-child(5) { animation-delay: 0.5s; }
+.fila:nth-child(6) { animation-delay: 0.6s; }
+.fila:nth-child(7) { animation-delay: 0.7s; }
+.fila:nth-child(8) { animation-delay: 0.8s; }
+.fila:nth-child(9) { animation-delay: 0.9s; }
+.fila:nth-child(10) { animation-delay: 1s; }
+
+/* HOVER FILAS */
 .fila:hover {
-    background: #dbeafe;
-    transform: scale(1.03);
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ANIMACIÓN */
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* FOOTER */
@@ -105,5 +200,5 @@ footer {
     padding: 15px;
     color: white;
     font-size: 14px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
